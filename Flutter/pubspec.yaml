@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   date_format: ^2.0.6
   vm_service:
-    sdk: flutter_driver
   package_info_plus: ^3.1.0
   shared_preferences: ^2.0.13
   image: ^4.0.0
