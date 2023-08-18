@@ -281,14 +281,14 @@ class ColorPickerWidgetState extends State<ColorPickerWidget> {
   }
 
   Future<void> _updateColor() async {
-    final double dpr = ui.window.devicePixelRatio;
+    final dpr = ui.window.devicePixelRatio;
     final center = (position + Offset(_radius, _radius)) * dpr;
-    final images.Image? image = await this.image;
+    final image = await this.image;
     final abgrPixel = image?.getPixelSafe(center.dx.toInt(), center.dy.toInt());
     if (abgrPixel == null) {
       return;
     }
-    final int argbPixel = _abgrToArgb(abgrPixel);
+    final argbPixel = _abgrToArgb(abgrPixel as int);
     ColorPickerKit.instance.color.value = Color(argbPixel);
   }
 
