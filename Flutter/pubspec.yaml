@@ -5,13 +5,14 @@ homepage: https://www.dokit.cn/#/index/home
 
 environment:
   sdk: '>=2.12.3 <3.1.0'
-  flutter: '>=2.0.5'
+  flutter: '>=2.0.6'
 
 dependencies:
   flutter:
     sdk: flutter
   date_format: ^2.0.6
-  vm_service: ^9.4.0
+  vm_service:
+    sdk: flutter_driver
   package_info_plus: ^3.1.0
   shared_preferences: ^2.0.13
   image: ^4.0.0
