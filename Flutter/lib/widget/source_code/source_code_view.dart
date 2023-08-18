@@ -1,7 +1,6 @@
 import 'package:dokit/widget/source_code/syntax_highlighter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SourceCodeView extends StatelessWidget {
   final String sourceCode;
@@ -27,8 +26,7 @@ class SourceCodeView extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: SelectableText.rich(
             TextSpan(
-              style: GoogleFonts.droidSansMono(fontSize: 12)
-                  .apply(fontSizeFactor: this._textScaleFactor),
+              style: TextStyle(fontSize: _textScaleFactor * 12),
               children: <TextSpan>[
                 DartSyntaxHighlighter(style).format(codeContent)
               ],

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dokit/kit/apm/vm/version.dart';
 import 'package:dokit/kit/apm/vm/vm_service_wrapper.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:vm_service/vm_service.dart';
 
 class VmHelper {

@@ -24,8 +24,8 @@ import 'package:dokit/util/FileOperation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart' as dart;
-import 'package:package_info/package_info.dart';
 import 'package:dokit/util/time_util.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'kit/apm/leaks/leaks_doctor.dart';
 import 'kit/apm/leaks/leaks_doctor_data.dart';
@@ -69,7 +69,7 @@ class DoKit {
 
     assert(
         app != null || appCreator != null, 'app and appCreator are both null');
-    if (release && !useInRelease) {
+    if (release || !useInRelease) {
       if (releaseAction != null) {
         releaseAction.call();
       } else {
