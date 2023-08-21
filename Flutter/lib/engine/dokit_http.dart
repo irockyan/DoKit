@@ -74,14 +74,16 @@ class DoKitHttpClient implements HttpClient {
   @override
   set authenticate(
       Future<bool> Function(Uri url, String scheme, String realm)? f) {
-    origin.authenticate = f as Future<bool> Function(Uri url, String scheme, String? realm);
+    origin.authenticate =
+        f as Future<bool> Function(Uri url, String scheme, String? realm);
   }
 
   @override
   set authenticateProxy(
       Future<bool> Function(String host, int port, String scheme, String realm)?
           f) {
-    origin.authenticateProxy = f as Future<bool> Function(String host, int port, String scheme, String? realm);
+    origin.authenticateProxy = f as Future<bool> Function(
+        String host, int port, String scheme, String? realm);
   }
 
   @override
@@ -104,13 +106,14 @@ class DoKitHttpClient implements HttpClient {
     future = future.catchError((dynamic error, [StackTrace? stackTrace]) {
       if (httpInfo == null) {
         httpInfo = HttpInfo.error(error.toString());
-        final HttpKit? kit = ApmKitManager.instance.getKit(ApmKitName.KIT_HTTP);
+        final kit = ApmKitManager.instance.getKit(ApmKitName.KIT_HTTP);
         kit?.save(httpInfo);
       }
+      return future;
     });
-    final HttpClientRequest request = await future;
+    final request = await future;
     httpInfo ??= HttpInfo(request.uri, request.method);
-    final HttpKit? kit = ApmKitManager.instance.getKit(ApmKitName.KIT_HTTP);
+    final kit = ApmKitManager.instance.getKit(ApmKitName.KIT_HTTP);
     kit?.save(httpInfo);
     return DoKitHttpClientRequest(request, httpInfo);
   }
@@ -189,12 +192,15 @@ class DoKitHttpClient implements HttpClient {
   Future<HttpClientRequest> putUrl(Uri url) {
     return monitor(origin.postUrl(url));
   }
-  
+
   @override
-  set connectionFactory(Future<ConnectionTask<Socket>> Function(Uri url, String? proxyHost, int? proxyPort)? f) {
+  set connectionFactory(
+      Future<ConnectionTask<Socket>> Function(
+              Uri url, String? proxyHost, int? proxyPort)?
+          f) {
     // TODO: implement connectionFactory
   }
-  
+
   @override
   set keyLog(Function(String line)? callback) {
     // TODO: implement keyLog

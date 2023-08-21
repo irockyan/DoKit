@@ -43,7 +43,7 @@ class VmHelper {
     }
   }
 
-  updateMemoryUsage() {
+  void updateMemoryUsage() {
     var mainId = VMServiceWrapper.instance.main?.id;
     if (!VMServiceWrapper.instance.connected || mainId == null) {
       return;

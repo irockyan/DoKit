@@ -23,20 +23,20 @@ class VMServiceWrapper {
   bool connected = false;
 
   Future<VmService> getService(info) async {
-    Uri uri = convertToWebSocketUrl(serviceProtocolUrl: info.serverUri);
+    var uri = convertToWebSocketUrl(serviceProtocolUrl: info.serverUri);
     return await vmServiceConnectUri(uri.toString(), log: StdoutLog());
   }
 
   Future<void> connect() async {
-    ServiceProtocolInfo info = await Service.getInfo();
+    var info = await Service.getInfo();
     if (info.serverUri == null) {
-      print("service  protocol url is null,start vm service fail");
+      print('service  protocol url is null,start vm service fail');
       return;
     }
     service = await getService(info);
     print('socket connected in service $info');
     vm = await service?.getVM();
-    List<IsolateRef>? isolates = vm?.isolates;
+    var isolates = vm?.isolates;
     main = isolates?.firstWhere((ref) => ref.name?.contains('main') == true);
     main ??= isolates?.first;
     connected = true;

@@ -37,7 +37,7 @@ class MemoryKit extends ApmKit {
   @override
   void start() {
     VMServiceWrapper.instance.connect();
-    VmHelper vmHelper = VmHelper.instance;
+    var vmHelper = VmHelper.instance;
     VMServiceWrapper.instance
         .connect()
         .then((value) => vmHelper.resolveVMInfo());
