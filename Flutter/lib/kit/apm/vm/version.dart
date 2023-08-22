@@ -14,7 +14,7 @@ class FlutterVersion extends SemanticVersion {
     // characters that are not digits. We do not currently have a need to know
     // more version parts than major, minor, and patch. If this changes, we can
     // add support for the extra values.
-    final List<String> _versionParts = version
+    final _versionParts = version
         .split('.')
         .map((String part) => RegExp(r'\d+').stringMatch(part) ?? '0')
         .toList();
@@ -25,9 +25,7 @@ class FlutterVersion extends SemanticVersion {
   }
 
   factory FlutterVersion.parse(Map<String, dynamic>? json) {
-    if (json == null) {
-      json={};
-    }
+    json ??= {};
     return FlutterVersion._(
       version: json['frameworkVersion'] as String,
       channel: json['channel'] as String,
